@@ -7,6 +7,6 @@
     <title>Page | About</title>
 </head>
 <body>
-    <h1>Pages</h1>
+    <h1>Page <?php echo $data['name']; ?></h1>
 </body>
 </html>

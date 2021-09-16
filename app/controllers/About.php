@@ -7,9 +7,10 @@ class About extends Controller{
         $this->view('about/index');
     }
 
-    public function page()
+    public function page($name = 'Hello, World!')
     {
-        $this->view('about/page');
+        $data['name'] = $name;
+        $this->view('about/page', $data);
     }
 
 }
