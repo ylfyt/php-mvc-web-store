@@ -23,4 +23,20 @@ class Mahasiswa_model {
         return $this->db->single();
     }
 
+    public function insertData($data)
+    {
+        $query = "INSERT INTO $this->table
+                    VALUES
+                    ('', :name, :nim, :email)";
+
+        $this->db->query($query);
+        $this->db->bind('name', $data['name']);
+        $this->db->bind('nim', $data['nim']);
+        $this->db->bind('email', $data['email']);
+
+        $this->db->execute();
+
+        return $this->db->rowAffected();
+    }
+
 }
