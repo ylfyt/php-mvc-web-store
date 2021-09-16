@@ -1,3 +1,3 @@
 <?php 
 
-define('BASEURL', 'http://localhost/mvc_web_store');
+define('BASEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/mvc_web_store');
