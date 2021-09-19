@@ -34,6 +34,31 @@ class Mahasiswa extends Controller {
                 exit;
             }
         }
+        else{
+            // TODO: Set error flasher 
+            header('Location: ' . BASEURL . '/mahasiswa');
+        }
+    }
+
+    public function delete()
+    {
+        if (isset($_POST['delete'])){
+            $id = $_POST['id'];
+            if ($this->model('Mahasiswa_model')->deleteData($id) > 0){
+                Flasher::setFlash('success to', 'delete', 'success');
+                header('Location: ' . BASEURL . '/mahasiswa');
+                exit;
+            }
+            else{
+                Flasher::setFlash('failed to', 'delete', 'danger');
+                header('Location: ' . BASEURL . '/mahasiswa');
+                exit;
+            }
+        }
+        else{
+            // TODO: Set error flasher 
+            header('Location: ' . BASEURL . '/mahasiswa');
+        }
     }
 
 }

@@ -17,7 +17,13 @@
                 <?php foreach( $data['mhs'] as $mhs ) : ?>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <?= $mhs['name'] ?>
-                        <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge bg-primary">detail</a>
+                        <div class="action d-flex">
+                          <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge bg-primary ml-1">detail</a>
+                          <form action="<?= BASEURL; ?>/mahasiswa/delete/" method="post">
+                            <input type="hidden" name="id" value="<?= $mhs['id'] ?>">
+                            <button type="submit" class="badge btn-danger ms-2" name="delete" onclick="return confirm('Yakin?');">delete</button>
+                          </form>
+                        </div>
                     </li>
                 <?php endforeach; ?>
             </ul>
