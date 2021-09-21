@@ -24,8 +24,12 @@ class Database {
         }
     }
 
-    public function query($query){
+    public function query($query, $bind = []){
         $this->stmt = $this->dbh->prepare($query);
+
+        foreach ($bind as $key => $val){
+            $this->bind($key, $val);
+        }
     }
 
     public function bind($param, $value, $type = null){

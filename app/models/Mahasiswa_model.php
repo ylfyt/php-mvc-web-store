@@ -17,8 +17,10 @@ class Mahasiswa_model {
 
     public function getMahasiswaById($id)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $query = 'SELECT * FROM ' . $this->table . ' WHERE id=:id';
+        $bind = ['id' => $id];
+        
+        $this->db->query($query, $bind);
 
         return $this->db->single();
     }
@@ -28,12 +30,13 @@ class Mahasiswa_model {
         $query = "INSERT INTO $this->table
                     VALUES
                     ('', :name, :nim, :email)";
+        $bind = [
+            'name' => $data['name'],
+            'nim' => $data['nim'],
+            'email' => $data['email']
+        ];
 
-        $this->db->query($query);
-        $this->db->bind('name', $data['name']);
-        $this->db->bind('nim', $data['nim']);
-        $this->db->bind('email', $data['email']);
-
+        $this->db->query($query, $bind);
         $this->db->execute();
 
         return $this->db->rowAffected();
@@ -42,9 +45,9 @@ class Mahasiswa_model {
     public function deleteData($id)
     {
         $query = "DELETE FROM $this->table WHERE id = :id";
-        $this->db->query($query);
-        $this->db->bind('id', $id);
+        $bind = ['id' => $id];
 
+        $this->db->query($query, $bind);
         $this->db->execute();
 
         return $this->db->rowAffected();
