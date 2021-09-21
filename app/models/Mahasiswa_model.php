@@ -1,7 +1,7 @@
 <?php 
 
 class Mahasiswa_model {
-    private $table = 'Mahasiswa';
+    private $table = 'mahasiswa';
     private $db;
     
     public function __construct()
