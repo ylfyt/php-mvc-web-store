@@ -1,6 +1,8 @@
 <?php 
 
-define('BASEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/mvc_web_store');
+define('DIRECTORY', '/mvc_web_store');
+
+define('BASEURL', 'http://' . $_SERVER['SERVER_NAME'] . DIRECTORY);
 
 // DB
 define('DB_HOST', 'localhost');
