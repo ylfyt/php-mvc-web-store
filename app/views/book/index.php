@@ -13,7 +13,7 @@
     <main>
         <div class="section">
             <div class="navbar">
-                <a href="#">< Sign Out</a>
+                <a href="<?= BASEURL ?>/user/signout">< Sign Out</a>
                 <div class="menu">
                     <a class="cart-button" href="<?= BASEURL ?>/cart">Cart</a>
                 </div>

@@ -90,6 +90,10 @@ input[type="submit"] {
     font-weight: 500;
 }
 
+input[type="submit"]:hover {
+    cursor: pointer;
+}
+
 .error{
     margin-top: 0px;
     color: rgb(150, 0, 0);
