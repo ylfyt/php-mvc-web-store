@@ -18,11 +18,15 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <?= $mhs['name'] ?>
                         <div class="action d-flex">
-                          <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge bg-primary ml-1">detail</a>
+                          
                           <form action="<?= BASEURL; ?>/mahasiswa/delete/" method="post">
                             <input type="hidden" name="id" value="<?= $mhs['id'] ?>">
-                            <button type="submit" class="badge btn-danger ms-2" name="delete" onclick="return confirm('Yakin?');">delete</button>
+                            <button type="submit" class="btn badge btn-danger ms-2" name="delete" onclick="return confirm('Yakin?');">delete</button>
                           </form>
+
+                          <button type="button" class="badge btn btn-warning ms-2" data-bs-toggle="modal" data-bs-target="#formModal">edit</button>
+
+                          <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge bg-primary ms-4 text-decoration-none">detail</a>
                         </div>
                     </li>
                 <?php endforeach; ?>
