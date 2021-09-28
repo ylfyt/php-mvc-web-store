@@ -35,4 +35,9 @@ class Book extends Controller{
         }
     }
 
+    public function get($id){
+        $book = $this->bookModel->getBookById($id);
+        return $book;
+    }
+
 }

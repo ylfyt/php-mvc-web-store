@@ -15,7 +15,7 @@
             <div class="navbar">
                 <a href="#">< Sign Out</a>
                 <div class="menu">
-                    <a class="cart-button" href="#">Cart</a>
+                    <a class="cart-button" href="<?= BASEURL ?>/cart">Cart</a>
                 </div>
             </div>
             <div class="container" id="card-container">
