@@ -52,4 +52,18 @@ class Cart_model {
 
         return $this->db->resultSet();
     }
+
+    public function createCart($userId){
+        $query = "INSERT INTO $this->table
+                    VALUES
+                    ('', :user_id)";
+        $bind = [
+            'user_id' => $userId
+        ];
+
+        $this->db->query($query, $bind);
+        $this->db->execute();
+
+        return $this->db->rowAffected();
+    }
 }

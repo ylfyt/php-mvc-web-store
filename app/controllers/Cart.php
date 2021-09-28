@@ -9,7 +9,12 @@ class Cart extends Controller{
 
     public function index()
     {
-        $cart = $this->cartModel->getCartByUserId(1);
+        if (!isset($_SESSION['signin'])){
+            header('Location: ' . BASEURL . '/user/signin');
+            exit;
+        }
+        $userId = $_SESSION['user-id'];
+        $cart = $this->cartModel->getCartByUserId($userId);
         
         $totalPrice = 0;
         $items = $cart['items'];

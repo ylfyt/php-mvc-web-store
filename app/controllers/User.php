@@ -58,7 +58,7 @@ class User extends Controller{
             header('Location: ' . BASEURL . '/book');
             exit;
         }
-        
+
         $data['title'] = 'Sign Up';
 
         if (isset($_POST['signup'])){
@@ -96,6 +96,11 @@ class User extends Controller{
             ];
 
             $data['error'] = $this->userModel->addUser($userData);
+
+            if ($data['error'] > 0){
+                $user = $this->userModel->getUserByUsername($username);
+                $data['error'] = $this->model('Cart_model')->createCart($user['id']);
+            }
 
             $this->view('user/signup', $data);
         }
