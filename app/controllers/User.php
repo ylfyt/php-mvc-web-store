@@ -9,11 +9,8 @@ class User extends Controller{
 
     public function index()
     {
-        $data['title'] = 'User Profile';
-
-        $this->view('templates/header', $data);
-        $this->view('home/index', $data);
-        $this->view('templates/footer', $data);
+        header('Location: ' . BASEURL . '/user/signin');
+        exit;
     }
 
 
