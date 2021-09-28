@@ -61,4 +61,31 @@ class Mahasiswa extends Controller {
         }
     }
 
+    public function edit()
+    {
+        if (isset($_POST['edit'])){
+            if ($this->model('Mahasiswa_model')->editData($_POST) > 0){
+                Flasher::setFlash('success to', 'edit', 'success');
+                header('Location: ' . BASEURL . '/mahasiswa');
+                exit;
+            }
+            else{
+                Flasher::setFlash('failed to', 'edit', 'danger');
+                header('Location: ' . BASEURL . '/mahasiswa');
+                exit;
+            }
+        }
+        else{
+            // TODO: Set error flasher 
+            header('Location: ' . BASEURL . '/mahasiswa');
+        }
+    }
+
+    public function get(){
+        $id = $_POST['id'];
+        $mhs = $this->model('Mahasiswa_model')->getMahasiswaById($id);
+
+        echo json_encode($mhs);
+    }
+
 }

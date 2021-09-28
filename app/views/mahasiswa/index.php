@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-6">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#formModal">Add Data</button>
+            <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#formModal" id="add-button">Add Data</button>
 
             <h3>Daftar Mahasiswa</h3>
 
@@ -24,7 +24,7 @@
                             <button type="submit" class="btn badge btn-danger ms-2" name="delete" onclick="return confirm('Yakin?');">delete</button>
                           </form>
 
-                          <button type="button" class="badge btn btn-warning ms-2" data-bs-toggle="modal" data-bs-target="#formModal">edit</button>
+                          <button type="button" class="badge btn btn-warning ms-2 edit-button"  data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $mhs['id']; ?>">edit</button>
 
                           <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge bg-primary ms-4 text-decoration-none">detail</a>
                         </div>
@@ -48,6 +48,7 @@
       <div class="modal-body">
                     
         <form action="<?= BASEURL; ?>/mahasiswa/insert" method="post">
+            <input type="hidden" name="id" id="id">
             <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="">
@@ -55,7 +56,7 @@
 
             <div class="mb-3">
             <label for="nim" class="form-label">NIM</label>
-            <input type="number" class="form-control" id="name" name="nim" placeholder="">
+            <input type="number" class="form-control" id="nim" name="nim" placeholder="">
             </div>
 
             <div class="mb-3">
