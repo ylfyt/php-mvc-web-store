@@ -117,16 +117,16 @@
                             </li>
 
                             <li>
-                                <form action="" method="post">
+                                <form action="<?= BASEURL ?>/book/addtocart" method="post">
                                     <input type="hidden" name="book-id" value="<?= $data['book']['id'] ?>">
                                     <input type="submit" name="add-to-cart" value="Add to Cart">
                                 </form>
                             </li>
-                            <?php if (isset($success)) : ?>
-                                <?php if ($success == 1) : ?>
+                            <?php if (isset($data['success'])) : ?>
+                                <?php if ($data['success'] == 1) : ?>
                                     <p style="color:green;">Added to cart</p>
                                 <?php endif; ?>
-                                <?php if ($success != 1) : ?>
+                                <?php if ($data['success'] != 1) : ?>
                                     <p style="color:red;">Something wrong</p>
                                 <?php endif; ?>    
                             <?php endif; ?>

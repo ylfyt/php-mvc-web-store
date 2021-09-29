@@ -50,4 +50,26 @@ class Book extends Controller{
         return $book;
     }
 
+    public function addtocart(){
+
+        if (!isset($_SESSION['signin'])){
+            header('Location: ' . BASEURL . '/user/sigin');
+            exit;
+        }
+
+        $data['title'] = 'Detail';
+
+        if ($_POST['add-to-cart']){
+            $userId = $_SESSION['user-id'];
+            $bookId = $_POST['book-id'];
+
+            $data['success'] = $this->model('Cart_model')->addItemToCart($userId, $bookId);
+            $book = $this->bookModel->getBookById($bookId);
+            $data['book'] = $book;
+            $this->view('book/detail', $data);
+        } else {
+            header('Location: ' . BASEURL . '/book');
+        }
+    }
+
 }
