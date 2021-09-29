@@ -111,4 +111,57 @@ class Cart_model {
         }
 
     }
+
+    public function removeItemFromCartBy1($userId, $bookId){
+        $cart = $this->getCartByUserId($userId);
+        
+        $query = 'SELECT * FROM ' . $this->itemsTable . ' WHERE cart_id=:cart_id AND book_id=:book_id';
+        $bind = [
+            'cart_id' => $cart['id'],
+            'book_id' => $bookId
+        ]; 
+
+        $this->db->query($query, $bind);
+        $item = $this->db->single();
+
+        if (!$item){
+            return 0;
+        } else {
+            $num = $item["num"];
+            $num -= 1;
+
+            if ($num == 0)
+            {
+                $query = "DELETE FROM $this->itemsTable WHERE cart_id = :cart_id AND book_id = :book_id";
+                $bind = [
+                    'cart_id' => $cart['id'],
+                    'book_id' => $bookId
+                ];
+
+                $this->db->query($query, $bind);
+                $this->db->execute();
+
+                return $this->db->rowAffected();
+            } 
+            else 
+            {
+                $query = "UPDATE $this->itemsTable SET
+                    num = :num
+                WHERE cart_id = :cart_id AND book_id = :book_id";
+            
+                $bind = [
+                    'num' => $num,
+                    'cart_id' => $cart['id'],
+                    'book_id' => $bookId
+                ];
+
+                $this->db->query($query, $bind);
+                $this->db->execute();
+                return $this->db->rowAffected();
+            }
+
+            
+        }
+
+    }
 }

@@ -42,4 +42,37 @@ class Cart extends Controller{
         $this->view('cart/index', $data);
     }
 
+    public function add()
+    {
+        if (!$_SESSION['signin']){
+            header('Location: ' . BASEURL . '/user/signin');
+            exit;
+        }
+
+        if (isset($_POST['plus'])){
+            $userId = $_SESSION['user-id'];
+            $bookId = $_POST['item-id'];
+
+            $this->cartModel->addItemToCart($userId, $bookId);
+        }
+
+        header('Location: ' . BASEURL . '/cart');
+    }
+
+    public function remove(){
+        if (!$_SESSION['signin']){
+            header('Location: ' . BASEURL . '/user/signin');
+            exit;
+        }
+
+        if (isset($_POST['minus'])){
+            $userId = $_SESSION['user-id'];
+            $bookId = $_POST['item-id'];
+
+            $this->cartModel->removeItemFromCartBy1($userId, $bookId);
+        }
+
+        header('Location: ' . BASEURL . '/cart');
+    }
+
 }
