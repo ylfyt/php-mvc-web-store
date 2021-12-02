@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $data['title'] ?></title>
 
-    <link href="<?= BASEURL ?>/public/css/bootstrap.css" rel="stylesheet">
-
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
